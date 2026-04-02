@@ -11,26 +11,20 @@ const LOGIN_INDICATORS = ['扫码登录', '扫一扫登录', 'qrcode', 'scan'];
  * 导航到抖音创作者平台首页并等待重定向完成。
  * - 未登录：停留在 creator.douyin.com/ 显示扫码二维码
  * - 已登录：跳转到 creator.douyin.com/creator-micro/home
+ *
+ * 关键：抖音首页 URL 本身就是登录页（显示二维码），不能用首页 URL 来判断
+ * "已到达登录页"，必须等待看是否会重定向到 dashboard。
  */
 async function navigateAndSettle(page) {
   await page.goto(CREATOR_HOME, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
+  // 只等 dashboard 跳转；如果超时说明停留在登录页
   try {
-    await page.waitForURL((url) => {
-      const s = url.toString();
-      return s.includes(DASHBOARD_PATH) || isOnLoginPage(s, page);
-    }, { timeout: 15000 });
+    await page.waitForURL(
+      (url) => url.toString().includes(DASHBOARD_PATH),
+      { timeout: 15000 }
+    );
   } catch {}
-
-  // 额外等待可能的 JS 跳转
-  if (isOnDashboard(page.url())) {
-    try {
-      await page.waitForURL(
-        (url) => !url.toString().includes(DASHBOARD_PATH),
-        { timeout: 6000 }
-      );
-    } catch {}
-  }
 }
 
 function isOnLoginPage(url) {
