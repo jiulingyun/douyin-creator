@@ -1,0 +1,43 @@
+{
+  "name": "@openclaw-cn/douyin-creator",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "抖音创作者平台运营自动化 CLI — 支持多账号管理、视频/图文/文章发布、互动管理、数据分析、创作中心",
+  "keywords": [
+    "douyin",
+    "抖音",
+    "创作者",
+    "自媒体",
+    "自动化",
+    "browser-automation",
+    "playwright",
+    "openclaw"
+  ],
+  "license": "MIT",
+  "author": "OpenClaw-CN",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jiulingyun/douyin-creator"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "douyin-creator": "index.js"
+  },
+  "files": [
+    "index.js",
+    "src/"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "npx playwright install chromium || true"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "marked": "^17.0.5",
+    "playwright": "^1.50.0",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
