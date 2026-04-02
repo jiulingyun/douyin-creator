@@ -4,34 +4,6 @@
 
 抖音创作者平台登录通过浏览器持久化上下文实现，支持多账号管理。每个账号的会话独立保存在 `~/.douyin-creator/accounts/<账号名>/` 下，互不影响。
 
-- 创作者中心首页：`https://creator.douyin.com/`
-- 未登录状态下首页直接显示抖音扫码登录二维码
-- 登录成功后自动跳转到：`https://creator.douyin.com/creator-micro/home`
-
-## 账号信息结构
-
-登录成功后，创作者中心首页会展示账号信息，HTML 结构如下：
-
-```html
-<div class="container-vEyGlK">
-  <div class="avatar-XoPjK6">
-    <img class="img-PeynF_" src="头像URL">
-  </div>
-  <div class="content-fFY6HC">
-    <div class="header-_F2uzl">
-      <div class="name-_lSSDc">昵称</div>
-      <div class="unique_id-EuH8eA">抖音号：xxx</div>
-      <div class="signature-HLGxt7">个人签名</div>
-    </div>
-    <div class="statics-kyUhqC">
-      <div class="statics-item-MDWoNA" id="guide_home_following">关注 <span class="number-No6ev9">数量</span></div>
-      <div class="statics-item-MDWoNA" id="guide_home_fans">粉丝 <span class="number-No6ev9">数量</span></div>
-      <div class="statics-item-MDWoNA">获赞 <span class="number-No6ev9">数量</span></div>
-    </div>
-  </div>
-</div>
-```
-
 ## 多账号
 
 所有命令通过全局 `--account <name>` 参数指定账号，省略时使用 `default`。

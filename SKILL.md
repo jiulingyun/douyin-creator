@@ -15,12 +15,6 @@ metadata:
 
 完整的抖音创作者平台运营自动化工具，支持多账号管理，覆盖内容发布、互动管理、数据分析、创作中心全流程。
 
-## 平台入口
-
-- 创作者中心首页：`https://creator.douyin.com/`
-- 已登录跳转地址：`https://creator.douyin.com/creator-micro/home`
-- 未登录状态下首页会直接显示抖音扫码登录的二维码
-
 ## 首次使用
 
 1. 全局安装 CLI 工具：`npm install -g @openclaw-cn/douyin-creator`
